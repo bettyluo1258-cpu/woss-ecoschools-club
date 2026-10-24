@@ -2226,96 +2226,35 @@
             </div>
 
             <div class="contact-form-panel">
-              <form id="eco-signup-form" method="POST" novalidate>
-                <div class="form-group">
-                  <label for="fullName" class="form-label">
-                    Full Name <span class="required-star" aria-hidden="true">*</span>
-                  </label>
-                  <input 
-                    type="text" 
-                    id="fullName" 
-                    name="fullName" 
-                    class="form-input" 
-                    placeholder="e.g., John Doe" 
-                    required 
-                    autocomplete="name"
-                  />
+              <div class="google-form-cta" style="display: flex; flex-direction: column; gap: 1rem; height: 100%; justify-content: center;">
+                <div style="font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 800; color: var(--color-primary);">
+                  Join the club
                 </div>
-
-                <div class="form-group">
-                  <label for="schoolEmail" class="form-label">
-                    School Email <span class="required-star" aria-hidden="true">*</span>
-                  </label>
-                  <input 
-                    type="email" 
-                    id="schoolEmail" 
-                    name="schoolEmail" 
-                    class="form-input" 
-                    placeholder="e.g., student@hdsb.ca or your student email" 
-                    required 
-                    autocomplete="email"
-                  />
-                  <div style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.4rem;">
-                    Please provide your active email to receive meeting announcements.
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="gradeLevel" class="form-label">
-                    Grade Level <span class="required-star" aria-hidden="true">*</span>
-                  </label>
-                  <select id="gradeLevel" name="gradeLevel" class="form-select" required>
-                    <option value="" disabled selected>Select your grade level</option>
-                    <option value="Grade 9">Grade 9</option>
-                    <option value="Grade 10">Grade 10</option>
-                    <option value="Grade 11">Grade 11</option>
-                    <option value="Grade 12">Grade 12</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <span class="form-label">How would you like to get involved?</span>
-                  <div class="checkbox-group">
-                    <label class="checkbox-label">
-                      <input type="checkbox" name="interests" value="Gardening" />
-                      <span>🌱 Gardening & Planting</span>
-                    </label>
-                    <label class="checkbox-label">
-                      <input type="checkbox" name="interests" value="Event Planning" />
-                      <span>📅 Event Planning</span>
-                    </label>
-                    <label class="checkbox-label">
-                      <input type="checkbox" name="interests" value="Media/Tech" />
-                      <span>💻 Media & Tech</span>
-                    </label>
-                    <label class="checkbox-label">
-                      <input type="checkbox" name="interests" value="General Volunteering" />
-                      <span>🤝 General Volunteering</span>
-                    </label>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="message" class="form-label">Message / Project Ideas</label>
-                  <textarea 
-                    id="message" 
-                    name="message" 
-                    class="form-textarea" 
-                    rows="4" 
-                    placeholder="Tell us what eco projects you'd love to see at White Oaks or any questions you have..."
-                  ></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-lg" id="submit-btn" style="width: 100%;">
-                  <span>Submit Application</span>
+                <h3 style="margin: 0; font-size: clamp(1.5rem, 2vw, 2rem); color: var(--color-text); line-height: 1.2;">
+                  Apply through our Google Form
+                </h3>
+                <p style="margin: 0; color: var(--color-text-muted); line-height: 1.7;">
+                  Click below to complete the official WOSS EcoClub application. This form is hosted on Google Forms so we can collect responses directly in one place.
+                </p>
+                <a
+                  id="google-form-link"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSc_nm4SXPnxGJ_Vw2J3fbJENLEE3H2ON8IMh8N-DJxE4R5ZgQ/viewform?usp=publish-editor"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-primary btn-lg"
+                  style="width: 100%; display: inline-flex; justify-content: center; align-items: center; gap: 0.6rem;"
+                >
+                  <span>Open Google Form</span>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="22" y1="2" x2="11" y2="13"></line>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <path d="M15 3h6v6"></path>
+                    <path d="M10 14L21 3"></path>
                   </svg>
-                </button>
-
-                <div id="form-feedback" class="form-alert" role="alert" aria-live="polite"></div>
-              </form>
+                </a>
+                <div style="font-size: 0.8rem; color: var(--color-text-muted);">
+                  Your form responses will be submitted through the Google Form instead of this page.
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2826,101 +2765,15 @@
       });
 
 
-      // 8. Contact Form Handling
-      const signupForm = document.getElementById('eco-signup-form');
-      const formFeedback = document.getElementById('form-feedback');
-
-      if (signupForm && formFeedback) {
-        signupForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-
-          const fullNameInput = document.getElementById('fullName');
-          const emailInput = document.getElementById('schoolEmail');
-          const gradeSelect = document.getElementById('gradeLevel');
-          const messageText = document.getElementById('message');
-          const checkedInterests = Array.from(
-            document.querySelectorAll('input[name="interests"]:checked')
-          ).map(cb => cb.value);
-
-          const fullName = fullNameInput ? fullNameInput.value.trim() : '';
-          const schoolEmail = emailInput ? emailInput.value.trim() : '';
-          const gradeLevel = gradeSelect ? gradeSelect.value : '';
-          const message = messageText ? messageText.value.trim() : '';
-
-          if (!fullName || !schoolEmail || !gradeLevel) {
-            formFeedback.className = 'form-alert error';
-            formFeedback.innerHTML = `
-              <div class="alert-header">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="8" x2="12" y2="12"></line>
-                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                </svg>
-                <span>Please complete required fields</span>
-              </div>
-              <p>Make sure to provide your name, school email, and select your grade level.</p>
-            `;
-            return;
-          }
-
-          const registrationData = {
-            fullName: fullName,
-            schoolEmail: schoolEmail,
-            gradeLevel: gradeLevel,
-            interests: checkedInterests.length > 0 ? checkedInterests : ['General Interest'],
-            message: message,
-            submittedAt: new Date().toISOString(),
-            status: 'Submitted',
-            school: 'White Oaks Secondary School (WOSS)'
-          };
-
-          console.log('✅ New WOSS EcoClub Registration:', registrationData);
-
-          try {
-            const existing = JSON.parse(localStorage.getItem('woss_ecoclub_members') || '[]');
-            existing.push(registrationData);
-            localStorage.setItem('woss_ecoclub_members', JSON.stringify(existing));
-          } catch (err) {
-            console.warn('LocalStorage unavailable:', err);
-          }
-
-          formFeedback.className = 'form-alert success';
-          formFeedback.innerHTML = `
-            <div class="alert-header">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-              </svg>
-              <span>Thank you for joining WOSS EcoClub! 🌿</span>
-            </div>
-            <p>Welcome to the team, <strong>${escapeHTML(registrationData.fullName)}</strong>! Your registration has been received successfully.</p>
-            <div class="alert-details">
-              <div><strong>Grade:</strong> ${escapeHTML(registrationData.gradeLevel)}</div>
-              <div><strong>Email:</strong> ${escapeHTML(registrationData.schoolEmail)}</div>
-              <div><strong>Focus Areas:</strong> ${registrationData.interests.map(i => escapeHTML(i)).join(', ')}</div>
-              <div style="margin-top: 0.85rem; padding: 0.85rem; background: #ffffff; border-radius: 6px; border: 1px solid #c8e6c9;">
-                <div style="font-weight: 700; margin-bottom: 0.4rem; color: #1b5e20;">Next Steps to Get Connected:</div>
-                <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.875rem;">
-                  <div>📅 <strong>Meetings:</strong> Mondays from 3:00 PM – 4:00 PM in Room N139 (North Campus).</div>
-                  <div>🎓 <strong>Google Classroom:</strong> Join with code <code style="font-family: monospace; font-weight: bold; background: #e8f5e9; padding: 2px 6px; border-radius: 4px; color: #1b5e20;">gxzrya6y</code></div>
-                  <div>📸 <strong>Instagram:</strong> Follow <a href="https://instagram.com/wossecoschools" target="_blank" rel="noopener noreferrer" style="color: #2e7d32; font-weight: 700; text-decoration: underline;">@wossecoschools</a> for announcements and event updates!</div>
-                  <div>✉️ <strong>Email:</strong> <a href="mailto:wossenvironmentalclub@gmail.com" style="color: #2e7d32; font-weight: 700; text-decoration: underline;">wossenvironmentalclub@gmail.com</a></div>
-                </div>
-              </div>
-            </div>
-            <button type="button" class="btn-reset-form" id="btn-submit-another">Submit another response</button>
-          `;
-
-          signupForm.reset();
-          formFeedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-          const resetBtn = document.getElementById('btn-submit-another');
-          if (resetBtn) {
-            resetBtn.addEventListener('click', () => {
-              formFeedback.className = 'form-alert';
-              formFeedback.innerHTML = '';
-            });
-          }
+      // 8. Google Form Redirect Link
+      const googleFormLink = document.getElementById('google-form-link');
+      if (googleFormLink) {
+        googleFormLink.addEventListener('click', () => {
+          window.open(
+            'https://docs.google.com/forms/d/e/1FAIpQLSc_nm4SXPnxGJ_Vw2J3fbJENLEE3H2ON8IMh8N-DJxE4R5ZgQ/viewform?usp=publish-editor',
+            '_blank',
+            'noopener,noreferrer'
+          );
         });
       }
 
@@ -2957,16 +2810,6 @@
             updateStatus();
           }
         });
-      }
-
-      function escapeHTML(str) {
-        if (!str) return '';
-        return String(str)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#039;');
       }
     });
   </script>
