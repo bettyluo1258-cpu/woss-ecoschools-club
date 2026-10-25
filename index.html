@@ -636,6 +636,87 @@
     }
 
     /* ==========================================================================
+       Partners Section
+       ========================================================================== */
+    .partners-section {
+      padding: 5rem 0 6rem;
+      background: var(--color-surface-subtle);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .partners-section .section-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .partners-marquee {
+      max-width: 1040px;
+      margin: 0 auto;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+      mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    }
+
+    .partners-marquee:hover .partners-track,
+    .partners-marquee:focus-within .partners-track {
+      animation-play-state: paused;
+    }
+
+    .partners-track {
+      display: flex;
+      width: max-content;
+      animation: partner-scroll 30s linear infinite;
+    }
+
+    .partners-set {
+      display: flex;
+      align-items: stretch;
+      gap: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .partner-card {
+      flex: 0 0 clamp(260px, 28vw, 320px);
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      overflow: hidden;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .partner-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--color-accent-border);
+      box-shadow: var(--shadow-md);
+    }
+
+    .partner-logo {
+      display: block;
+      width: 100%;
+      max-width: 270px;
+      max-height: 130px;
+      object-fit: contain;
+    }
+
+    .partner-logo-oakville {
+      max-width: 180px;
+      max-height: 160px;
+    }
+
+    .partner-logo-unac {
+      filter: invert(1) hue-rotate(180deg);
+    }
+
+    @keyframes partner-scroll {
+      to { transform: translateX(-50%); }
+    }
+
+    /* ==========================================================================
        Projects Section
        ========================================================================== */
     .projects-section {
@@ -1546,6 +1627,7 @@
     /* Responsive */
     @media (max-width: 1024px) {
       .focus-grid { grid-template-columns: repeat(2, 1fr); }
+      .partners-set { gap: 1rem; padding-right: 1rem; }
       .exec-card { width: calc(33.333% - 1.25rem); max-width: 290px; flex: 0 1 calc(33.333% - 1.25rem); }
       .contact-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
@@ -1558,6 +1640,8 @@
       .hero-section { padding: 4.5rem 0 4rem 0; }
       .hero-title { font-size: 2.25rem; }
       .focus-grid { grid-template-columns: 1fr; }
+      .partners-section { padding: 4rem 0; }
+      .partner-card { min-height: 170px; }
       .projects-grid { grid-template-columns: 1fr; }
       .exec-card { width: calc(50% - 1rem); max-width: 320px; flex: 0 1 calc(50% - 1rem); }
       .checkbox-group { grid-template-columns: 1fr; }
@@ -1567,6 +1651,36 @@
 
     @media (max-width: 480px) {
       .exec-card { width: 100%; max-width: 340px; flex: 0 1 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .partners-marquee {
+        overflow: visible;
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+
+      .partners-track {
+        width: 100%;
+        animation: none;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .partners-set {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+      }
+
+      .partners-set-duplicate {
+        display: none;
+      }
+
+      .partner-card {
+        flex-basis: min(100%, 320px);
+        transition: none;
+      }
     }
   </style>
 </head>
@@ -1824,6 +1938,84 @@
                 </div>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           Partners Section
+           ========================================================================== -->
+      <section class="partners-section" id="partners">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-kicker">Growing Greener Together</span>
+            <h2 class="section-title">Our Partners</h2>
+            <p class="section-subtitle">
+              We are grateful to work alongside organizations that help build a more sustainable future.
+            </p>
+          </div>
+
+          <div class="partners-marquee">
+            <div class="partners-track">
+              <div class="partners-set">
+                <div class="partner-card">
+                  <img
+                    class="partner-logo"
+                    src="/assets/aistudio/lsf.png"
+                    alt="Learning for a Sustainable Future (LSF)"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="partner-card">
+                  <img
+                    class="partner-logo partner-logo-oakville"
+                    src="/assets/aistudio/Oakville-Green.jpg"
+                    alt="Oakville Green"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="partner-card">
+                  <img
+                    class="partner-logo partner-logo-unac"
+                    src="/assets/aistudio/UNAC-logo-central-blue.jpg"
+                    alt="United Nations Association in Canada (UNAC)"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+              <div class="partners-set partners-set-duplicate" aria-hidden="true">
+                <div class="partner-card">
+                  <img
+                    class="partner-logo"
+                    src="/assets/aistudio/lsf.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="partner-card">
+                  <img
+                    class="partner-logo partner-logo-oakville"
+                    src="/assets/aistudio/Oakville-Green.jpg"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="partner-card">
+                  <img
+                    class="partner-logo partner-logo-unac"
+                    src="/assets/aistudio/UNAC-logo-central-blue.jpg"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
