@@ -663,12 +663,15 @@
 
     .partners-track {
       display: flex;
+      flex-wrap: nowrap;
       width: max-content;
       animation: partner-scroll 30s linear infinite;
     }
 
     .partners-set {
       display: flex;
+      flex: 0 0 auto;
+      flex-wrap: nowrap;
       align-items: stretch;
       gap: 1.5rem;
       padding-right: 1.5rem;
@@ -1655,7 +1658,6 @@
 
     @media (prefers-reduced-motion: reduce) {
       .partner-card {
-        flex-basis: min(100%, 320px);
         transition: none;
       }
     }
